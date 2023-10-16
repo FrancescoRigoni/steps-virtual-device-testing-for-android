@@ -181,6 +181,10 @@ func startTestRun(configs ConfigsModel, testAssets TestAssetsAndroid) error {
 	case testTypeInstrumentation:
 		testModel.TestSpecification.AndroidInstrumentationTest = &testing.AndroidInstrumentationTest{}
 
+		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOptions = &testing.ShardingOptions{}
+		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOptions.UniformSharding = &testing.UniformSharding{}
+		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOptions.UniformSharding.NumShards = 10 
+
 		if testAssets.isBundle {
 			testModel.TestSpecification.AndroidInstrumentationTest.AppBundle = &testing.AppBundle{
 				BundleLocation: &testing.FileReference{GcsPath: testAssets.testApp.GcsPath},
