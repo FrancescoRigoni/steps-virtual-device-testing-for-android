@@ -183,7 +183,7 @@ func startTestRun(configs ConfigsModel, testAssets TestAssetsAndroid) error {
 
 		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption = &testing.ShardingOption{}
 		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding = &testing.UniformSharding{}
-		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding.NumShards = 10 
+		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding.NumShards = 30 
 
 		if testAssets.isBundle {
 			testModel.TestSpecification.AndroidInstrumentationTest.AppBundle = &testing.AppBundle{
