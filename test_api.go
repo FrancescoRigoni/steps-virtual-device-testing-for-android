@@ -181,10 +181,6 @@ func startTestRun(configs ConfigsModel, testAssets TestAssetsAndroid) error {
 	case testTypeInstrumentation:
 		testModel.TestSpecification.AndroidInstrumentationTest = &testing.AndroidInstrumentationTest{}
 
-		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption = &testing.ShardingOption{}
-		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding = &testing.UniformSharding{}
-		testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding.NumShards = 30 
-
 		if testAssets.isBundle {
 			testModel.TestSpecification.AndroidInstrumentationTest.AppBundle = &testing.AppBundle{
 				BundleLocation: &testing.FileReference{GcsPath: testAssets.testApp.GcsPath},
@@ -211,6 +207,11 @@ func startTestRun(configs ConfigsModel, testAssets TestAssetsAndroid) error {
 			testModel.TestSpecification.AndroidInstrumentationTest.OrchestratorOption = "USE_ORCHESTRATOR"
 		} else {
 			testModel.TestSpecification.AndroidInstrumentationTest.OrchestratorOption = "DO_NOT_USE_ORCHESTRATOR"
+		}
+		if configs.NumberOfUniformShards != "" {
+			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption = &testing.ShardingOption{}
+			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding = &testing.UniformSharding{}
+			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding.NumShards = int64(configs.NumberOfUniformShards)
 		}
 		log.Debugf("AndroidInstrumentationTest: %+v", testModel.TestSpecification.AndroidInstrumentationTest)
 	case testTypeRobo:
