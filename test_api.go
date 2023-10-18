@@ -208,7 +208,7 @@ func startTestRun(configs ConfigsModel, testAssets TestAssetsAndroid) error {
 		} else {
 			testModel.TestSpecification.AndroidInstrumentationTest.OrchestratorOption = "DO_NOT_USE_ORCHESTRATOR"
 		}
-		if configs.NumberOfUniformShards != "" {
+		if configs.NumberOfUniformShards != nil {
 			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption = &testing.ShardingOption{}
 			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding = &testing.UniformSharding{}
 			testModel.TestSpecification.AndroidInstrumentationTest.ShardingOption.UniformSharding.NumShards = int64(configs.NumberOfUniformShards)
