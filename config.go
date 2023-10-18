@@ -114,7 +114,7 @@ func (configs *ConfigsModel) print() {
 		log.Printf("- InstTestRunnerClass: %s", configs.InstTestRunnerClass)
 		log.Printf("- InstTestTargets: %s", configs.InstTestTargets)
 		log.Printf("- UseOrchestrator: %t", configs.UseOrchestrator)
-		log.Printf("- NumberOfUniformShards: %s", configs.NumberOfUniformShards)
+		log.Printf("- NumberOfUniformShards: %d", configs.NumberOfUniformShards)
 	}
 
 	//robo
